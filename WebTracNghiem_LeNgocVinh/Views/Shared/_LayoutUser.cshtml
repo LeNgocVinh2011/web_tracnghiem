@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>An toàn giao thông</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <nav class="navbar navbar-inverse" style="background-color:lawngreen">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                                <a class="navbar-brand" href="@Url.Action("Index", "Default")"><i class="fas fa-home"></i> Trang chủ</a>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li><a href="@Url.Action("TrangVaoThi", "Default")"><i class="far fa-file-alt"></i> Vào thi</a></li>
+                            <li><a href="#"><i class="fas fa-poll"></i> Kết quả thi</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> @Session["Ten"]</a></li>
+                            <li><a href="@Url.Action("SignOutUser","LoginUser")"><span class="glyphicon glyphicon-log-in" ></span> Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p style="text-align:center"><a title="thi trắc nghiệm an toàn giao thông"> Thi trắc nghiệm an toàn giao thông</a></p>
+                    <p style="text-align:center">Địa chỉ : <b>565 Quang Trung Street, Dong Ve Ward, Thanh Hoa City</b>.</p>
+                    <p style="text-align:center">Bản Quyền: <a href="#" target="_blank">Lê Ngọc Vinh</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

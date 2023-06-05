@@ -1,0 +1,141 @@
+﻿@model List<WebTracNghiem_LeNgocVinh.Models.CauHois>
+@{
+    ViewBag.Title = "TrangVaoThi";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    var count = 1;
+    String[] correctAnswer = {};
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div><h1 class="text-center">ĐỀ THI TRẮC NGHIỆM AN TOÀN GIAO THÔNG MỚI NHẤT 2021</h1></div>
+
+    <script>
+        var seconds = 900;
+        function timer() {
+            var days = Math.floor(seconds / 24 / 60 / 60);
+            var hoursLeft = Math.floor((seconds) - (days * 86400));
+            var hours = Math.floor(hoursLeft / 3600);
+            var minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
+            var minutes = Math.floor(minutesLeft / 60);
+            var remainingSeconds = seconds % 60;
+            if (remainingSeconds < 10) {
+                remainingSeconds = "0" + remainingSeconds;
+            }
+            document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
+            if (seconds == -1) {
+                clearInterval(countdownTimer);
+                confirm("Hết thời gian");
+                $('#form2').submit();
+                document.getElementById('countdown').innerHTML = "Finish!";
+            } else {
+                seconds--;
+            }
+        }
+        var countdownTimer = setInterval('timer()', 1000);
+    </script>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="panel panel-default" id="blockA">
+                <div class="panel-body">
+                    <div style="margin-bottom:10px">
+                        <strong style="font-size: 12pt; color: blue;">
+                            Câu hỏi | Đề số: 01 - 160 Câu Hỏi
+                        </strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary panel-heading" id="blockB">
+                <strong style="font-size: 12pt; color: blue;">
+                    Thời gian còn lại: <span id="countdown" class="timer">15:00</span>
+                </strong>
+            </div>
+
+            <div class="panel panel-default" id="blockC">
+                <div class="panel-body-1">
+                    <div class="text-center-1">
+                        <button class="btn-primary btn-block" type="button" id="but1" onclick="displayResults();">KẾT THÚC BÀI THI</button>
+                        <label id="User" style="display:none" class="text-center">Người dự thi: @Session["Ten"]</label>
+                        <label id="selectedRadio" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-sm-12 col-xs-12 panel panel-default">
+            <div class="row content">
+                <div class="panel-body">
+                    @foreach (var item in Model)
+                    {
+                    <script>
+                            $(document).ready(function () {
+                                $('#but1').click(function () {
+                                    $('#User').show();
+                                    $('.radioOption').attr("disabled", true);
+                                    $('.radioOptionResult').show();
+                                    $('#blockB').hide();
+                                });
+                            });
+
+                            function displayResults() {
+                                document.getElementById("selectedRadio").innerHTML = "";
+                                var results = document.getElementsByTagName('input');
+                                var correct = $('.radioOptionResult').text();
+                                correctAnswer = correct.split("Answer:");
+                                var dem = 0;
+                                for (i = 0; i < results.length; i++) {
+                                    if (results[i].type == "radio") {
+                                        if (results[i].checked) {
+                                            for (j = 0; j < correctAnswer.length; j++) {
+                                                if (results[i].value.localeCompare(correctAnswer[j + 1])) {
+                                                    dem++;
+                                                } else {
+                                                    dem = dem;
+                                                } 
+                                            }
+                                            document.getElementById("selectedRadio").innerHTML
+                                                += "<hr/>Câu hỏi " + results[i].name + ": Đáp án chọn : " + results[i].value + " -Số câu đúng- " +dem+ "<hr/>";  
+                                        }
+                                    }
+                                }
+
+                                if (dem > 15) {
+                                    document.getElementById("selectedRadio").innerHTML
+                                        += "<hr/> Kết quả: Đạt <hr/>";
+                                } else {
+                                    document.getElementById("selectedRadio").innerHTML
+                                        += "<hr/> Kết quả: Chưa đạt <hr/>";
+                                }
+                            }
+                    </script>
+                        <div class="text-primary"><strong>Câu hỏi @count:</strong></div>
+                        <div style="text-align: justify;"><strong>@item.cauHoi</strong></div>
+                        <div>
+                            <img class="img-responsive" src="@item.urlImg" style="margin-left: auto;margin-right: auto;">
+                        </div>
+                        <div>
+                            <input type="radio" id="option1" name="@count" class="radioOption" value="@item.dapAnA" />@item.dapAnA
+                        </div>
+                        <div>
+                            <input type="radio" id="option2" name="@count" class="radioOption" value="@item.dapAnB" />@item.dapAnB
+                        </div>
+                        <div>
+                            <input type="radio" id="option3" name="@count" class="radioOption" value="@item.dapAnC" />@item.dapAnC
+                        </div>
+                        <div>
+                            <label id="correctAnswer" name="@count" class="radioOptionResult" style="display:none"/><b>Đáp án:@item.dapAn</b>
+                        </div>
+                        count++;
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

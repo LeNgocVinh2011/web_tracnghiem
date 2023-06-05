@@ -1,0 +1,111 @@
+﻿@model PagedList.IPagedList<WebTracNghiem_LeNgocVinh.Models.CauHois>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Câu hỏi thuộc danh mục luật giao thông đường bộ";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("LuatDuongBo", "BoLuats", FormMethod.Get))
+{
+    <p>
+        <table class="table-condensed">
+            <tr>
+
+                <td>
+                    Tìm kiếm:
+                </td>
+                <td>
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string,
+                   new { @class = "form-control", @placeholder = "Nhập từ khóa tìm kiếm" })
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Tìm kiếm
+                    </button>
+                </td>
+                <td>
+                    <a href="@Url.Action("LuatDuongBo", "BoLuats")" class="btn btn-default">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>
+                            <strong>Tải lại</strong>
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </p>
+}
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.ActionLink("Câu hỏi", "LuatDuongBo", new { sortOrder = ViewBag.CauHoi })
+        </th>
+        <th>
+            Đáp án A
+        </th>
+        <th>
+            Đáp án B
+        </th>
+        <th>
+            Đáp án C
+        </th>
+        <th>
+            Đáp án D
+        </th>
+        <th>
+            Đáp án
+        </th>
+        <th>
+            @Html.ActionLink("Ngày tạo", "LuatDuongBo", new { sortOrder = ViewBag.NgayTao })
+        </th>
+        <th>
+            Ngày sửa
+        </th>
+        <th>
+            Người tạo
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.cauHoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dapAnA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dapAnB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dapAnC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dapAnD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dapAn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngayTao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngaySua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NguoiDung.hoTen)
+            </td>
+            <td>
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) trên @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("LuatDuongBo", new { page }))

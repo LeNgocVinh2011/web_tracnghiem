@@ -1,0 +1,71 @@
+﻿@model PagedList.IPagedList<WebTracNghiem_LeNgocVinh.Models.KetQua>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Kết quả thi";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "KeTQuaThis", FormMethod.Get))
+{
+    <p>
+        <table class="table-condensed">
+            <tr>
+
+                <td>
+                    Tìm kiếm:
+                </td>
+                <td>
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string,
+                   new { @class = "form-control", @placeholder = "Nhập từ khóa tìm kiếm" })
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Tìm kiếm
+                    </button>
+                </td>
+                <td>
+                    <a href="@Url.Action("Index", "KetQuaThis")" class="btn btn-default">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>
+                            <strong>Tải lại</strong>
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            Họ tên
+        </th>
+        <th>
+            @Html.ActionLink("Số câu đúng", "Index", new { sortOrder = ViewBag.SoCau })
+        </th>
+        <th>
+            @Html.ActionLink("Kết quả", "Index", new { sortOrder = ViewBag.ketQua })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NguoiDung.hoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soCauDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ketQua1)
+            </td>
+            <td>
+        </tr>
+    }
+
+</table>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) trên @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

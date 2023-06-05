@@ -1,0 +1,122 @@
+﻿@model WebTracNghiem_LeNgocVinh.Models.CauHois
+
+@{
+    ViewBag.Title = "Quản lý câu hỏi > Chỉnh sửa câu hỏi";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckfinder/ckfinder.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <br/>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.iD_CauHoi)
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Danh mục luật</label>
+        <div class="col-md-10">
+            @Html.DropDownList("iD_DanhMuc", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.iD_DanhMuc, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Người tạo</label>
+        <div class="col-md-10">
+            @Html.DropDownList("iD_NguoiDung", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.iD_NguoiDung, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cauHoi, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.cauHoi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.cauHoi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.urlImg, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="form-inline">
+                @Html.EditorFor(model => model.urlImg,
+                new { htmlAttributes = new { @class = "form-control form-inline", @style = "width:100%!important" } })
+                <input id="chonAnh" type="button" value="Chọn ảnh" class="btn btn-group-lg" />
+            </div>
+            @Html.ValidationMessageFor(model => model.urlImg, "", new { @class = "text-danger" })
+            <script language="javascrip" type="text/javascript">
+                $(function () {
+                    $("#chonAnh").click(function () {
+                        var ckfiner = new CKFinder(); ckfiner.selectActionFunction =
+                            function (fileUrl) { $("#urlImg").val(fileUrl); }; ckfiner.popup();
+                    })
+                });
+            </script>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dapAnA, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dapAnA, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.dapAnA, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dapAnB, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dapAnB, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.dapAnB, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dapAnC, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dapAnC, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.dapAnC, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dapAnD, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dapAnD, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.dapAnD, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dapAn, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dapAn, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.dapAn, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ngaySua, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ngaySua, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ngaySua, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-offset-2 col-md-10">
+        <button type="submit" class="btn btn-success">
+            <i class="far fa-save"></i> Lưu thay đổi
+        </button>&nbsp;
+        <a href="@Url.Action("Index", "CauHois")" class="btn btn-danger">
+            <i class="fas fa-undo-alt"></i> Huỷ bỏ
+        </a>
+    </div>
+</div>
+}

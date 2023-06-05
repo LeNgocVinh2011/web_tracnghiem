@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ thi trắc nghiệm";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div><h1 class="text-center">ĐỀ THI TRẮC NGHIỆM AN TOÀN GIAO THÔNG MỚI NHẤT 2021</h1></div>
+
+<div class="row">
+    <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h2><span style="color: #0000ff; font-family: arial, helvetica, sans-serif;"><strong class="text-success">PHẦN MỀM LUYỆN THI TRẮC NGHIỆM 160 CÂU</strong></span></h2>
+                <p style="text-align: center;"><img src="~/assets/images/traffic.png" alt="trắc nghiệm an toàn giao thông" width="250" height="520" class="aligncenter"/></p>
+                <p style="text-align: justify;">Để ôn tập phần thi lý thuyết an toàn giao thông học viên có thể sử dụng trực tiếp phần mềm thi trắc nghiệm an toàn giao thông do CNTT HDU <b style="color:red">phát triển.</b></p>
+                <p style="text-align: justify;">Bộ phần mềm đề thi này được tổng hợp đầy đủ từ <strong>160 câu hỏi an toàn giao thông </strong> do Tổng Cục Đường Bộ Việt Nam ban hành.</p>
+                <p style="text-align: justify;">Có thể không cần có kết nối mạng Wifi,3G,4G,5G, bạn vẫn có  thể sử dụng ứng dụng, phù hợp với các loại phương tiện hiện tại như: laptop, điện thoại, iphone, ipad, máy tính bảng, điện thoại chạy Android,Samsung, điện thoại Nokia...</p>
+                <p style="text-align: justify;">Chúc quý học viên thi tốt, nếu có khó khăn gì trong quá trình học, hãy để lại bình luận để chúng tôi có thể hỗ trợ bạn !</p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div>Tham khảo thêm: <a href="#" target="_blank">Thi trắc nghiện an toàn giao thông 160 câu</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h2 style="text-align: justify;"><span style="color: #0000ff;"><strong class="text-success">BỘ ĐỀ THI THỬ TRẮC NGHIỆM AN TOÀN GIAO THÔNG TỪ 15/05/2021</strong></span></h2>
+                <div>
+                    <p style="text-align: justify;">Cấu trúc bộ đề thi trắc nghiệm an toàn giao thông sẽ bao gồm <strong>20 câu hỏi</strong>, mỗi câu hỏi chỉ có <strong>duy nhất 1 đáp trả lời đúng</strong> phản ánh đúng bản chất của thi trắc nghiệm. Khác hẳn với bộ đề thi luật cũ là 2 đáp án. Mỗi đề thi chúng tôi sẽ bố trí từ <strong>2 - 4 câu hỏi điểm liệt</strong> để học viên có thể làm quen và ghi nhớ, tránh việc làm sai câu hỏi liệt.</p><ul style="text-align: justify;"><li>Số lượng câu hỏi: <strong><span style="color: #ff0000;">20 Câu</span></strong>.</li><li>Yêu cầu làm đúng <span style="color: #ff0000;"><strong>15/20 Câu</strong></span>.</li><li>Thời gian: <span style="color: #ff0000;"><strong>15 Phút</strong></span>.</li></ul><p style="text-align: justify;"><strong>Lưu ý đặc biệt:</strong> <span style="color: #0000ff;">Tuyệt đối không được làm sai câu hỏi điểm liệt, vì trong kỳ thi thật nếu học viên làm sai "<strong>Câu Điểm Liệt</strong>" đồng nghĩa với việc "<strong>KHÔNG ĐẠT</strong>" dù cho các câu khác trả lời đúng!</span></p><p style="text-align: justify;">
+                    <div style="margin-bottom:10px">
+                        <strong style="font-size: 12pt; color: blue;">
+                            Chọn đề thi:
+                        </strong>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de1"><a href="@Url.Action("TrangVaoThi", "Default")">Đề 1</a></button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de2"><a href="@Url.Action("TrangVaoThi", "Default")">Đề 2</a></button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de3"><a href="@Url.Action("TrangVaoThi", "Default")">Đề 3</a></button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de4"><a href="@Url.Action("TrangVaoThi", "Default")">Đề 4</a></button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de5"><a href="@Url.Action("TrangVaoThi", "Default")">Đề 5</a></button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de6"><a href="@Url.Action("TrangVaoThi", "Default")">Đề 6</a></button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de7"><a href="@Url.Action("TrangVaoThi", "Default")">Đề 7</a></button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de8"><a href="@Url.Action("TrangVaoThi", "Default")">Đề 8</a></button>
+                    </div>
+                    <div>
+                        <strong style="font-size: 12pt; color: #bb0112;display: block;padding:7px;text-align: justify;">
+                            Lưu ý : 8 x 20 = 160 câu hỏi, hoàn thành 8 bộ đề trên coi như bạn đã ôn trọn vẹn tất cả các câu hỏi ôn thi an toàn giao thông.
+                            Tuy nhiên, bạn có thể ôn thêm 20 bộ đề cấu trúc chuẩn của chúng tôi, mỗi bộ đề có 1 câu điểm liệt, cấu trúc sẽ giống với đề thi thật nhất, chỉ khác đề thi thật chọn ngẫu nhiên câu hỏi, không bộ đề nào giống bộ đề nào, còn chúng tôi cố định từng đề để các bạn tiện hỏi đáp hơn.
+                        </strong>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de9"> Đề 1</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de10">Đề 2</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de11">Đề 3</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de12">Đề 4</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de13">Đề 5</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de14">Đề 6</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de15">Đề 7</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de16">Đề 8</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de17">Đề 9</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de18">Đề 10</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de19">Đề 11</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de20">Đề 12</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de21">Đề 13</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de22">Đề 14</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de23">Đề 15</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de24">Đề 16</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de25">Đề 17</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de26">Đề 18</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de27">Đề 19</button>
+                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi" value="de28">Đề 20</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fb-root"></div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4 style="color: #f40102;text-align: justify;"><span style="font-size: 20px;">Chia sẻ các bước thi đạt kết quả cao:</span></h4>
+                <div>
+                    <ul>
+                        <li style="text-align: justify;">Bước 1 : Ôn tập <a href="#" target="_blank" rel="noopener"><span style="color: #3366ff;"><strong>200 câu hỏi lý thuyết, các bạn có thể tải file pdf</strong></span></a> về để ôn tập offline ở bất kỳ đâu mà không phải kết nối mạng, hoặc ôn bộ đề <strong><span style="color: #3366ff;"><a style="color: #3366ff;" href="" target="_blank" rel="noopener">160 câu hỏi online</a></span></strong> của chúng tôi.</li>
+                        <li style="text-align: justify;">Bước 2 : Xem <span style="color: #0000ff;"><strong>video ôn thi 160 câu bằng mẹo</strong> </span>của chúng tôi (có 5 phần nhé) để làm nhanh các câu hỏi không quá khó chỉ đòi hỏi bạn nhớ rõ ( kéo xuống phía dưới để xem ạ).</li>
+                        <li style="text-align: justify;">Bước 3 : Thi thử <a href="" target="_blank" rel="noopener"><span style="color: #3366ff;"><strong>20 câu hỏi điểm liệt A1</strong></span></a> để tránh bị liệt vì có những bạn làm đúng <strong>19/20</strong> vẫn rớt do làm <strong>sai câu điểm liệt</strong>.</li>
+                        <li style="text-align: justify;">Bước 4 : Thi chắc chắn từng đề một, chúng tôi có 8 đề, bạn cứ ôn thi từng đề theo thứ tự từ 1 đến 8 để đảm bảo bạn có thể vượt qua <strong>đề thi sát hạch</strong> thực dễ dàng. Nếu vẫn chưa thấy đủ, hãy luyện thêm <strong>20 đề thi cấu trúc chuẩn </strong>, gần giống đề thi thật nhất.</li>
+                        <li style="text-align: justify;">Bước 5 : Trước ngày thi bạn nên thư giãn đầu óc bằng việc <strong>ngừng làm mọi việc kể cả việc ôn thi</strong>, nhồi nhét sẽ làm cho bạn căng thẳng hơn, <span style="color: #0000ff;"><strong>hãy ngủ sớm</strong> </span>để não bộ đạt trạng thái tốt nhất trước ngày thi.</li>
+                    </ul>
+                </div>
+                <p><strong style="color: #f40102;">Điểm Qua <a href="#" target="_blank" rel="noopener"><span style="color: #0000ff;">Mẹo Học Thi Lý Thuyết </span></a>&nbsp;Trước Khi Thi</strong> </p>
+            </div>
+        </div>
+    </div>
+</div>
+

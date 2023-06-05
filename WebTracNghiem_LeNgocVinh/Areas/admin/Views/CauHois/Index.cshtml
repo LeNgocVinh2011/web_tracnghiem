@@ -1,0 +1,162 @@
+﻿@model PagedList.IPagedList<WebTracNghiem_LeNgocVinh.Models.CauHois>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Quản lý câu hỏi";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "CauHois", FormMethod.Get))
+{
+    <p>
+        <table class="table-condensed">
+            <tr>
+
+                <td>
+                    Tìm kiếm
+                </td>
+                <td>
+                    @Html.TextBox("searchString", ViewBag.CurrentFilter as string,
+                   new { @class = "form-control", @placeholder = "Nhập từ khóa tìm kiếm" })
+                </td>
+                <td>
+                    Danh mục
+                </td>
+                <td>
+                    @Html.DropDownList("filterQuestion", null, "Tất cả", new { @class = "form-control" })
+                </td>
+                <td>
+                    <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+                </td>
+                <td>
+                    <a href="@Url.Action("Index", "CauHois")" class="btn btn-default">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>
+                            <strong>Tải lại</strong>
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </p>
+}
+
+<p>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Danh mục luật
+        </th>
+        <th>
+            @Html.ActionLink("Người tạo", "Index",
+                new
+                {
+                    sortOrder = ViewBag.CauHoi_Admin,
+                    currentFilter = ViewBag.CurrentFilter,
+                    filteriDcm = ViewBag.FilterSort,
+                    page = ViewBag.pageCurren
+                })
+        </th>
+        <th>
+            Câu hỏi
+        </th>
+        <th>
+            Đáp án A
+        </th>
+        <th>
+            Đáp án B
+        </th>
+        <th>
+           Đáp án C
+        </th>
+        <th>
+           Đáp án D
+        </th>
+        <th>
+            Đáp án đúng
+        </th>
+        <th>
+            @Html.ActionLink("Ngày tạo", "Index",
+             new
+             {
+                 sortOrder = ViewBag.NgayTao,
+                 currentFilter = ViewBag.CurrentFilter,
+                 filteriDcm = ViewBag.FilterSort,
+                 page = ViewBag.pageCurren
+             })
+        </th>
+        <th>
+            @Html.ActionLink("Ngày sửa", "Index",
+             new
+             {
+                 sortOrder = ViewBag.NgaySua,
+                 currentFilter = ViewBag.CurrentFilter,
+                 filteriDcm = ViewBag.FilterSort,
+                 page = ViewBag.pageCurren
+             })
+        </th>
+        <th class="text-right">
+            <a href="@Url.Action("Create", "CauHois")">
+                <i class="fas fa-plus"></i>
+                <span>
+                    <strong>Thêm mới</strong>
+                </span>
+            </a>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DanhMucLuat.tenDanhMuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NguoiDung.hoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cauHoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dapAnA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dapAnB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dapAnC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dapAnD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dapAn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngayTao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngaySua)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "CauHois", new { iD_CauHoi = item.iD_CauHoi })">
+                    <i class="fas fa-edit"></i>
+                </a>&nbsp;
+                <a href="@Url.Action("Details", "CauHois", new { iD_CauHoi = item.iD_CauHoi })">
+                    <i class="fas fa-info-circle"></i>
+                </a>&nbsp;
+                <a href="@Url.Action("Delete", "CauHois", new { iD_CauHoi = item.iD_CauHoi })">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) trên @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+

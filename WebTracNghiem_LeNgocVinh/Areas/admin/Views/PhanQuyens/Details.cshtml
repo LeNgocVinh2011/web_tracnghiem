@@ -1,0 +1,52 @@
+﻿@model WebTracNghiem_LeNgocVinh.Models.PhanQuyen
+
+@{
+    ViewBag.Title = "Quản lý phân quyền > Chi tiết quyền";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <br />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.iD_NguoiDung)
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Người dùng</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NguoiDung.hoTen, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.NguoiDung.hoTen, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Quyền quản trị</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.laAdmin, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.laAdmin, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.laUser, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.laUser, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.laUser, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="@Url.Action("Edit", "PhanQuyens", new { iD_NguoiDung = Model.iD_NguoiDung })" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Chỉnh sửa
+            </a>&nbsp;
+            <a href="@Url.Action("Index", "PhanQuyens")" class="btn btn-danger">
+                <i class="fas fa-undo-alt"></i> Quay lại
+            </a>
+        </div>
+    </div>
+</div>
+}
